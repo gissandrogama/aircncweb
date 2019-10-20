@@ -11,15 +11,11 @@ export default function Dashboard(){
 
     //conexão com o backend
     useEffect(() => {
-        const socket = socketio('http://localhost:3333')
-
-        //recebendo mensagem do backend
-        socket.on('message', data => {
-            console.log(data)
+        const user_id = localStorage.getItem('user')
+        const socket = socketio('http://localhost:3333', {
+            query: { user_id },
         })
 
-        //frontend enviando mensagem
-        socket.emit('omini', 'Stack')
     }, [])
 
     useEffect(() => {
