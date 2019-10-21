@@ -18,8 +18,7 @@ export default function Dashboard(){
         query: { user_id },
     }), [user_id])
 
-    useEffect(() => {
-
+    useEffect(() => {              
         //ouvido socket e pegando as informações
         socket.on('booking_request', data => {
             setRequests([...requests, data])
